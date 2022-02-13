@@ -115,10 +115,10 @@ require_once('close.php');
                 <nav>
                     <ul class="pagination mr-2">
                         <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
-                            <a href="./?page=<?= $currentPage - 1 ?>" class="page-link">Page Précédente</a>
+                            <a href="./?page=<?= $currentPage - 1 ?>&sort=<?= $sort ?>&direction=<?= $direction ?>&limit=<?= $perPage ?>" class="page-link">Page Précédente</a>
                         </li>
                         <li class="page-item <?= ($currentPage == $nbPages) ? "disabled" : "" ?>">
-                            <a href="./?page=<?= $currentPage + 1 ?>" class="page-link">Page Suivante</a>
+                            <a href="./?page=<?= $currentPage + 1 ?>&sort=<?= $sort ?>&direction=<?= $direction ?>&limit=<?= $perPage ?>" class="page-link">Page Suivante</a>
                         </li>
                     </ul>
                     <span>Page <?= $currentPage ?> sur <?= $nbPages ?></span>
