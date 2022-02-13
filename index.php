@@ -17,16 +17,10 @@ if(isset($_GET['sort']) && !empty($_GET['sort'])){
     $sort = 'title';
 }
 
-if(isset($_GET['asc']) && !empty($_GET['asc'])){
-    $asc = (int) strip_tags($_GET['asc']);
-}else{
-    $asc = 0;
-}
-
 if(isset($_GET['direction']) && !empty($_GET['direction'])){
     $direction = (string) strip_tags($_GET['direction']);
 }else{
-    $asc = 'ASC';
+    $direction = 'ASC';
 }
 
 require_once('connect.php');
