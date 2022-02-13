@@ -22,7 +22,7 @@ $pages = ceil($nbMovies / $perPage);
 
 $firstMovie = ($currentPage * $perPage) - $perPage;
 
-$sql = 'SELECT * FROM `film` DESC LIMIT :firstMovie, :perPage;';
+$sql = 'SELECT * FROM `film` DESC LIMIT :perPage;';
 
 $query = $db->prepare($sql);
 
