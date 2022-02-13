@@ -17,6 +17,24 @@ if(isset($_GET['limit']) && !empty($_GET['limit'])){
     $perPage = 10;
 }
 
+if(isset($_GET['filter']) && !empty($_GET['filter'])){
+    $filter = (int) strip_tags($_GET['filter']);
+}else{
+    $filter = null;
+}
+
+if(isset($_GET['filter']) && !empty($_GET['filter'])){
+    $filter = (int) strip_tags($_GET['filter']);
+}else{
+    $filter = null;
+}
+
+if(isset($_GET['asc']) && !empty($_GET['asc'])){
+    $asc = (int) strip_tags($_GET['asc']);
+}else{
+    $asc = 0;
+}
+
 
 require_once('connect.php');
 
@@ -32,13 +50,13 @@ $nbMovies = (int) $result['nb_movies'];
 
 $nbPages = ceil($nbMovies / $perPage);
 
-$firstMovie = ($currentPage * $perPage) - $perPage;
+$desc = ($currentPage * $perPage) - $perPage;
 
-$sql = 'SELECT * FROM `film` ORDER BY `last_update` DESC LIMIT :firstMovie, :perPage;';
+$sql = 'SELECT * FROM `film` ORDER BY `title` DESC LIMIT :asce, :perPage;';
 
 $query = $db->prepare($sql);
 
-$query->bindValue(':firstMovie', $firstMovie, PDO::PARAM_INT);
+$query->bindValue(':asce', $asc, PDO::PARAM_INT);
 $query->bindValue(':perPage', $perPage, PDO::PARAM_INT);
 
 $query->execute();
@@ -65,36 +83,36 @@ require_once('close.php');
                 <label class="form-label">Nombre de resultats par pages :</label>
                 <select class="form-select">
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>" class="page-link">10</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= 10 ?>&filter=<?= $filter ?>" class="page-link">10</a>
                     </option>
                     <option value="20">
-                        <a href="./?page=<?= $currentPage ?>" class="page-link">20</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= 20 ?>&filter=<?= $filter ?>" class="page-link">20</a>
                     </option>
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>" class="page-link">30</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= 30 ?>&filter=<?= $filter ?>" class="page-link">30</a>
                     </option>
                 </select>
 
                 <label class="form-label">Trier selon :</label>
                 <select class="form-select">
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>" class="page-link">Le nom du film</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&filter=<?= 'name' ?>" class="page-link">Le nom du film</a>
                     </option>
                     <option value="20">
-                        <a href="./?page=<?= $currentPage ?>" class="page-link">Le genre du film</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&filter=<?= 'type' ?>" class="page-link">Le genre du film</a>
                     </option>
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>" class="page-link">Le nom de location</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&filter=<?= 'rentals' ?>" class="page-link">Le nombre de location</a>
                     </option>
                 </select>
 
                 <label class="form-label">Par ordre :</label>
                 <select class="form-select">
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>" class="page-link">Croissant</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>" class="page-link">Croissant</a>
                     </option>
                     <option value="20">
-                        <a href="./?page=<?= $currentPage ?>" class="page-link">Décroissant</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>" class="page-link">Décroissant</a>
                     </option>
                 </select>
 
