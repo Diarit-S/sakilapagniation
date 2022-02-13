@@ -70,24 +70,30 @@ require_once('close.php');
             <section class="col-12">
                 <h1>Liste des films</h1>
 
-                <form class="d-flex flex-direction-column align-items-start" action="index.php?test=test">
-                    <label class="form-label">Nombre de resultats par pages :</label>
-                    <select class="form-select" name="limit">
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="30">30</option>
-                    </select>
-                    <label class="form-label">Trier selon :</label>
-                    <select class="form-select" name="sort">
-                        <option value="title">Le nom du film</option>
-                        <option value="type">Le genre du film</option>
-                        <option value="rentals">Le nombre de location</option>
-                    </select>
-                    <label class="form-label">Par ordre :</label>
-                    <select class="form-select" name="direction">
-                        <option value="ASC">Croissant</option>
-                        <option value="DESC">Décroissant</option>
-                    </select>
+                <form class="d-flex flex-column align-items-start" action="index.php?test=test">
+                    <div class="mb-2">
+                        <label class="form-label">Nombre de resultats par pages :</label>
+                        <select class="form-select w-auto" name="limit">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Trier selon :</label>
+                        <select class="form-select w-auto" name="sort">
+                            <option value="title">Le nom du film</option>
+                            <option value="type">Le genre du film</option>
+                            <option value="rentals">Le nombre de location</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Par ordre :</label>
+                        <select class="form-select w-auto" name="direction">
+                            <option value="ASC">Croissant</option>
+                            <option value="DESC">Décroissant</option>
+                        </select>
+                    </div>
                     <input type="hidden" name="page" value="<?php $currentPage ?>">
                     <input class="btn btn-primary mt-2" type="submit" value="Envoyer">
                 </form>
