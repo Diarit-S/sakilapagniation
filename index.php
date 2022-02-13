@@ -37,14 +37,14 @@ $nbMovies = (int) $result['nb_movies'];
 
 $nbPages = ceil($nbMovies / $perPage);
 
-$currentPageFirstMovie = ($currentPage * $perPage) - $perPage;
+// $currentPageFirstMovie = ($currentPage * $perPage) - $perPage;
 
-$sql = 'SELECT * FROM `film` ORDER BY :sort :direction LIMIT :currentPageFirstMovie, :perPage;';
+$sql = 'SELECT * FROM `film` ORDER BY :sort :direction LIMIT :perPage;';
 
 
 $query = $db->prepare($sql);
 
-$query->bindValue(':currentPageFirstMovie', $currentPageFirstMovie, PDO::PARAM_INT);
+// $query->bindValue(':currentPageFirstMovie', $currentPageFirstMovie, PDO::PARAM_INT);
 $query->bindValue(':perPage', $perPage, PDO::PARAM_INT);
 $query->bindValue(':sort', $sort, PDO::PARAM_STR);
 $query->bindValue(':direction', $direction, PDO::PARAM_STR);
