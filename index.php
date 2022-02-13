@@ -69,16 +69,22 @@ require_once('close.php');
                         ?>
                     </tbody>
                 </table>
+                <label class="form-label">Nombre de resultats par pages :</label>
+                <select class="form-select">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                </select>
                 <nav>
-                    <ul class="pagination">
+                    <ul class="pagination mr-2">
                         <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
                             <a href="./?page=<?= $currentPage - 1 ?>" class="page-link">Page Précédente</a>
                         </li>
                         <li class="page-item <?= ($currentPage == $nbPages) ? "disabled" : "" ?>">
                             <a href="./?page=<?= $currentPage + 1 ?>" class="page-link">Page Suivante</a>
                         </li>
-                        <span>Page <?= $currentPage ?> sur <?= $nbPages ?></span>
                     </ul>
+                    <span>Page <?= $currentPage ?> sur <?= $nbPages ?></span>
                 </nav>
             </section>
         </div>
