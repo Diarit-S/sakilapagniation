@@ -88,7 +88,7 @@ require_once('close.php');
                             <option value="DESC">Décroissant</option>
                         </select>
                     </div>
-                    <input type="hidden" name="page" value="<?php $currentPage ?>">
+                    <input type="hidden" name="page" value="<?php echo $currentPage ?>">
                     <input class="btn btn-primary mt-2" type="submit" value="Envoyer">
                 </form>
 
