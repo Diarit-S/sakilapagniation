@@ -23,6 +23,11 @@ if(isset($_GET['asc']) && !empty($_GET['asc'])){
     $asc = 0;
 }
 
+if(isset($_GET['direction']) && !empty($_GET['direction'])){
+    $direction = (int) strip_tags($_GET['direction']);
+}else{
+    $asc = 'ASC';
+}
 
 require_once('connect.php');
 
@@ -38,15 +43,16 @@ $nbMovies = (int) $result['nb_movies'];
 
 $nbPages = ceil($nbMovies / $perPage);
 
-$desc = ($currentPage * $perPage) - $perPage;
+$currentPageFirstMovie = ($currentPage * $perPage) - $perPage;
 
-$sql = 'SELECT * FROM `film` ORDER BY :sort DESC LIMIT :asce, :perPage;';
+$sql = 'SELECT * FROM `film` ORDER BY :sort :direction LIMIT :currentPageFirstMovie, :perPage;';
 
 $query = $db->prepare($sql);
 
-$query->bindValue(':asce', $asc, PDO::PARAM_INT);
+$query->bindValue(':currentPageFirstMovie', $currentPageFirstMovie, PDO::PARAM_INT);
 $query->bindValue(':perPage', $perPage, PDO::PARAM_INT);
 $query->bindValue(':sort', $sort, PDO::PARAM_STR);
+$query->bindValue(':direction', $direction, PDO::PARAM_STR);
 
 $query->execute();
 
@@ -72,36 +78,36 @@ require_once('close.php');
                 <label class="form-label">Nombre de resultats par pages :</label>
                 <select class="form-select">
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= 10 ?>&sort=<?= $sort ?>" class="page-link">10</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= 10 ?>&sort=<?= $sort ?>&<?= $direction ?>" class="page-link">10</a>
                     </option>
                     <option value="20">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= 20 ?>&sort=<?= $sort ?>" class="page-link">20</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= 20 ?>&sort=<?= $sort ?>&<?= $direction ?>" class="page-link">20</a>
                     </option>
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= 30 ?>&sort=<?= $sort ?>" class="page-link">30</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= 30 ?>&sort=<?= $sort ?>&<?= $direction ?>" class="page-link">30</a>
                     </option>
                 </select>
 
                 <label class="form-label">Trier selon :</label>
                 <select class="form-select">
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&sort=<?= 'name' ?>" class="page-link">Le nom du film</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&sort=<?= 'title' ?>&<?= $direction ?>" class="page-link">Le nom du film</a>
                     </option>
                     <option value="20">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&sort=<?= 'type' ?>" class="page-link">Le genre du film</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&sort=<?= 'type' ?>&<?= $direction ?>" class="page-link">Le genre du film</a>
                     </option>
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&sort=<?= 'rentals' ?>" class="page-link">Le nombre de location</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&sort=<?= 'rentals' ?>&<?= $direction ?>" class="page-link">Le nombre de location</a>
                     </option>
                 </select>
 
                 <label class="form-label">Par ordre :</label>
                 <select class="form-select">
                     <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>" class="page-link">Croissant</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&<?= 'ASC' ?>" class="page-link">Croissant</a>
                     </option>
                     <option value="20">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>" class="page-link">Décroissant</a>
+                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&<?= 'DESC' ?>" class="page-link">Décroissant</a>
                     </option>
                 </select>
 
