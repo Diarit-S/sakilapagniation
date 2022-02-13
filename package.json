@@ -1,0 +1,22 @@
+{
+  "name": "sakilapagination",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diarit-S/sakilapagniation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Diarit-S/sakilapagniation/issues"
+  },
+  "homepage": "https://github.com/Diarit-S/sakilapagniation#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
