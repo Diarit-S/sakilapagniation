@@ -1,20 +1,20 @@
 <?php
-$currentPage = 1
+$currentPage = 1;
 if(isset($_GET['page']) && !empty($_GET['page'])){
     $currentPage = (int) strip_tags($_GET['page']);
 }
 
-$perPage = 10
+$perPage = 10;
 if(isset($_GET['limit']) && !empty($_GET['limit'])){
     $perPage = (int) strip_tags($_GET['limit']);
 }
 
-$sort = 'title'
+$sort = 'title';
 if(isset($_GET['sort']) && !empty($_GET['sort'])){
     $sort = (string) strip_tags($_GET['sort']);
 }
 
-$direction = 'ASC'
+$direction = 'ASC';
 if(isset($_GET['direction']) && !empty($_GET['direction'])){
     $direction = (string) strip_tags($_GET['direction']);
 }
