@@ -48,10 +48,12 @@ require_once('close.php');
     <main class="container">
         <div class="row">
             <section class="col-12">
-                <h1>Liste des movies</h1>
+                <h1>Liste des films</h1>
                 <table class="table">
                     <thead>
                         <th>Titre</th>
+                        <th>Classement</th>
+                        <th>Prix location</th>
                     </thead>
                     <tbody>
                         <?php
@@ -59,6 +61,8 @@ require_once('close.php');
                         ?>
                             <tr>
                                 <td><?= $movie['title'] ?></td>
+                                <td><?= $movie['rating'] ?></td>
+                                <td><?= $movie['rental_rate'] ?></td>
                             </tr>
                         <?php
                         }
