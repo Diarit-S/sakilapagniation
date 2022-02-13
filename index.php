@@ -26,7 +26,7 @@ $sql = 'SELECT * FROM `film` DESC LIMIT :perPage;';
 
 $query = $db->prepare($sql);
 
-$query->bindValue(':firstMovie', $firstMovie, PDO::PARAM_INT);
+// $query->bindValue(':firstMovie', $firstMovie, PDO::PARAM_INT);
 $query->bindValue(':perPage', $perPage, PDO::PARAM_INT);
 
 $query->execute();
