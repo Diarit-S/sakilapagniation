@@ -37,14 +37,12 @@ $nbMovies = (int) $result['nb_movies'];
 
 $nbPages = ceil($nbMovies / $perPage);
 
-// $currentPageFirstMovie = ($currentPage * $perPage) - $perPage;
 
 $sql = 'SELECT * FROM `film` ORDER BY :sort :direction LIMIT :perPage;';
 
 
 $query = $db->prepare($sql);
 
-// $query->bindValue(':currentPageFirstMovie', $currentPageFirstMovie, PDO::PARAM_INT);
 $query->bindValue(':perPage', $perPage, PDO::PARAM_INT);
 $query->bindValue(':sort', $sort, PDO::PARAM_STR);
 $query->bindValue(':direction', $direction, PDO::PARAM_STR);
@@ -71,43 +69,27 @@ require_once('close.php');
             <section class="col-12">
                 <h1>Liste des films</h1>
 
-                <label class="form-label">Nombre de resultats par pages :</label>
-                <select class="form-select">
-                    <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= 10 ?>&sort=<?= $sort ?>&<?= $direction ?>" class="page-link">10</a>
-                    </option>
-                    <option value="20">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= 20 ?>&sort=<?= $sort ?>&<?= $direction ?>" class="page-link">20</a>
-                    </option>
-                    <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= 30 ?>&sort=<?= $sort ?>&<?= $direction ?>" class="page-link">30</a>
-                    </option>
-                </select>
+                <form action="index.php">
+                    <label class="form-label">Nombre de resultats par pages :</label>
+                    <select class="form-select" name="limit">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                    </select>
+                    <label class="form-label">Trier selon :</label>
+                    <select class="form-select" name="sort">
+                        <option value="title">Le nom du film</option>
+                        <option value="type">Le genre du film</option>
+                        <option value="rentals">Le nombre de location</option>
+                    </select>
+                    <label class="form-label">Par ordre :</label>
+                    <select class="form-select" name="direction">
+                        <option value="ASC">Croissant</option>
+                        <option value="DESC">Décroissant</option>
+                    </select>
 
-                <label class="form-label">Trier selon :</label>
-                <select class="form-select">
-                    <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&sort=<?= 'title' ?>&<?= $direction ?>" class="page-link">Le nom du film</a>
-                    </option>
-                    <option value="20">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&sort=<?= 'type' ?>&<?= $direction ?>" class="page-link">Le genre du film</a>
-                    </option>
-                    <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&sort=<?= 'rentals' ?>&<?= $direction ?>" class="page-link">Le nombre de location</a>
-                    </option>
-                </select>
-
-                <label class="form-label">Par ordre :</label>
-                <select class="form-select">
-                    <option value="10">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&<?= 'ASC' ?>" class="page-link">Croissant</a>
-                    </option>
-                    <option value="20">
-                        <a href="./?page=<?= $currentPage ?>&limit=<?= $perPage ?>&<?= 'DESC' ?>" class="page-link">Décroissant</a>
-                    </option>
-                </select>
-
-                
+                    <input class="b-button" type="submit" value="Envoyer">
+                </form>
 
                 <table class="table">
                     <thead>
