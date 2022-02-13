@@ -1,26 +1,22 @@
 <?php
+$currentPage = 1
 if(isset($_GET['page']) && !empty($_GET['page'])){
     $currentPage = (int) strip_tags($_GET['page']);
-}else{
-    $currentPage = 1;
 }
 
+$perPage = 10
 if(isset($_GET['limit']) && !empty($_GET['limit'])){
     $perPage = (int) strip_tags($_GET['limit']);
-}else{
-    $perPage = 10;
 }
 
+$sort = 'title'
 if(isset($_GET['sort']) && !empty($_GET['sort'])){
-    $sort = (int) strip_tags($_GET['sort']);
-}else{
-    $sort = 'title';
+    $sort = (string) strip_tags($_GET['sort']);
 }
 
+$direction = 'ASC'
 if(isset($_GET['direction']) && !empty($_GET['direction'])){
     $direction = (string) strip_tags($_GET['direction']);
-}else{
-    $direction = 'ASC';
 }
 
 require_once('connect.php');
@@ -37,9 +33,7 @@ $nbMovies = (int) $result['nb_movies'];
 
 $nbPages = ceil($nbMovies / $perPage);
 
-
 $sql = 'SELECT * FROM `film` ORDER BY :sort :direction LIMIT :perPage;';
-
 
 $query = $db->prepare($sql);
 
