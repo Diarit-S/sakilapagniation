@@ -18,7 +18,7 @@ $nbMovies = (int) $result['nb_movies'];
 
 $perPage = 10;
 
-$pages = ceil($nbMovies / $perPage);
+$nbPages = ceil($nbMovies / $perPage);
 
 $firstMovie = ($currentPage * $perPage) - $perPage;
 
@@ -74,9 +74,10 @@ require_once('close.php');
                         <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
                             <a href="./?page=<?= $currentPage - 1 ?>" class="page-link">Page Précédente</a>
                         </li>
-                        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                        <li class="page-item <?= ($currentPage == $nbPages) ? "disabled" : "" ?>">
                             <a href="./?page=<?= $currentPage + 1 ?>" class="page-link">Page Suivante</a>
                         </li>
+                        <span>Page <?= $currentPage ?> sur <?= $nbPages ?></span>
                     </ul>
                 </nav>
             </section>
