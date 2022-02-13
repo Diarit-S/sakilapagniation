@@ -68,8 +68,8 @@ require_once('close.php');
                     <div class="mb-2">
                         <label class="form-label">Nombre de resultats par pages :</label>
                         <select class="form-select w-auto" name="limit">
-                            <option value="10" <?= $perPage=="10") ? echo 'selected' : echo ''?>>10</option>
-                            <option value="20" <?= $perPage=="20") ? echo 'selected' : echo ''?>>20</option>
+                            <option value="10" <?= $perPage=="10" ? echo 'selected' : echo ''?>>10</option>
+                            <option value="20" <?= $perPage=="20" ? echo 'selected' : echo ''?>>20</option>
                             <option value="30" <?=if($perPage=="30"){echo 'selected'}?>>30</option>
                         </select>
                     </div>
