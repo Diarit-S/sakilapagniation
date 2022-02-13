@@ -4,6 +4,20 @@ if(isset($_GET['page']) && !empty($_GET['page'])){
 }else{
     $currentPage = 1;
 }
+
+if(isset($_GET['limit']) && !empty($_GET['limit'])){
+    $perPage = (int) strip_tags($_GET['limit']);
+}else{
+    $perPage = 10;
+}
+
+if(isset($_GET['limit']) && !empty($_GET['limit'])){
+    $perPage = (int) strip_tags($_GET['limit']);
+}else{
+    $perPage = 10;
+}
+
+
 require_once('connect.php');
 
 $sql = 'SELECT COUNT(*) AS nb_movies FROM `film`;';
@@ -15,8 +29,6 @@ $query->execute();
 $result = $query->fetch();
 
 $nbMovies = (int) $result['nb_movies'];
-
-$perPage = 10;
 
 $nbPages = ceil($nbMovies / $perPage);
 
@@ -49,6 +61,45 @@ require_once('close.php');
         <div class="row">
             <section class="col-12">
                 <h1>Liste des films</h1>
+
+                <label class="form-label">Nombre de resultats par pages :</label>
+                <select class="form-select">
+                    <option value="10">
+                        <a href="./?page=<?= $currentPage ?>" class="page-link">10</a>
+                    </option>
+                    <option value="20">
+                        <a href="./?page=<?= $currentPage ?>" class="page-link">20</a>
+                    </option>
+                    <option value="10">
+                        <a href="./?page=<?= $currentPage ?>" class="page-link">30</a>
+                    </option>
+                </select>
+
+                <label class="form-label">Trier selon :</label>
+                <select class="form-select">
+                    <option value="10">
+                        <a href="./?page=<?= $currentPage ?>" class="page-link">Le nom du film</a>
+                    </option>
+                    <option value="20">
+                        <a href="./?page=<?= $currentPage ?>" class="page-link">Le genre du film</a>
+                    </option>
+                    <option value="10">
+                        <a href="./?page=<?= $currentPage ?>" class="page-link">Le nom de location</a>
+                    </option>
+                </select>
+
+                <label class="form-label">Par ordre :</label>
+                <select class="form-select">
+                    <option value="10">
+                        <a href="./?page=<?= $currentPage ?>" class="page-link">Croissant</a>
+                    </option>
+                    <option value="20">
+                        <a href="./?page=<?= $currentPage ?>" class="page-link">Décroissant</a>
+                    </option>
+                </select>
+
+                
+
                 <table class="table">
                     <thead>
                         <th>Titre</th>
@@ -69,12 +120,6 @@ require_once('close.php');
                         ?>
                     </tbody>
                 </table>
-                <label class="form-label">Nombre de resultats par pages :</label>
-                <select class="form-select">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                </select>
                 <nav>
                     <ul class="pagination mr-2">
                         <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
