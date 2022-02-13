@@ -24,7 +24,7 @@ if(isset($_GET['asc']) && !empty($_GET['asc'])){
 }
 
 if(isset($_GET['direction']) && !empty($_GET['direction'])){
-    $direction = (int) strip_tags($_GET['direction']);
+    $direction = (string) strip_tags($_GET['direction']);
 }else{
     $asc = 'ASC';
 }
