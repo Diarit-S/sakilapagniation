@@ -69,7 +69,7 @@ require_once('close.php');
             <section class="col-12">
                 <h1>Liste des films</h1>
 
-                <form action="index.php">
+                <form action="index.php?test=test">
                     <label class="form-label">Nombre de resultats par pages :</label>
                     <select class="form-select" name="limit">
                         <option value="10">10</option>
