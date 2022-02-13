@@ -41,7 +41,7 @@ $query->bindValue(':perPage', $perPage, PDO::PARAM_INT);
 $query->bindValue(':sort', $sort, PDO::PARAM_STR);
 $query->bindValue(':direction', $direction, PDO::PARAM_STR);
 
-var_dump($direction);
+// var_dump($direction);
 $query->execute();
 
 $movies = $query->fetchAll(PDO::FETCH_ASSOC);
