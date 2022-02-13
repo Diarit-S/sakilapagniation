@@ -65,12 +65,12 @@ require_once('close.php');
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-    <main class="container">
+    <main class="container mt-5">
         <div class="row">
             <section class="col-12">
                 <h1>Liste des films</h1>
 
-                <form action="index.php?test=test">
+                <form class="d-flex flex-direction-column align-items-start" action="index.php?test=test">
                     <label class="form-label">Nombre de resultats par pages :</label>
                     <select class="form-select" name="limit">
                         <option value="10">10</option>
@@ -89,7 +89,7 @@ require_once('close.php');
                         <option value="DESC">Décroissant</option>
                     </select>
                     <input type="hidden" name="page" value="<?php $currentPage ?>">
-                    <input class="btn btn-primary" type="submit" value="Envoyer">
+                    <input class="btn btn-primary mt-2" type="submit" value="Envoyer">
                 </form>
 
                 <table class="table">
