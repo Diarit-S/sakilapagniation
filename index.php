@@ -22,11 +22,11 @@ $pages = ceil($nbMovies / $perPage);
 
 $firstMovie = ($currentPage * $perPage) - $perPage;
 
-$sql = 'SELECT * FROM `film` DESC LIMIT :perPage;';
+$sql = 'SELECT * FROM `film` ORDER BY `last_update` DESC LIMIT :firstMovie, :perPage;';
 
 $query = $db->prepare($sql);
 
-// $query->bindValue(':firstMovie', $firstMovie, PDO::PARAM_INT);
+$query->bindValue(':firstMovie', $firstMovie, PDO::PARAM_INT);
 $query->bindValue(':perPage', $perPage, PDO::PARAM_INT);
 
 $query->execute();
