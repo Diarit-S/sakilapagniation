@@ -68,24 +68,24 @@ require_once('close.php');
                     <div class="mb-2">
                         <label class="form-label">Nombre de resultats par pages :</label>
                         <select class="form-select w-auto" name="limit">
-                            <option value="10" <?= if ($perPage=="10") echo 'selected="selected"' ?>>10</option>
-                            <option value="20" <?= if ($perPage=="20") echo 'selected="selected"' ?>>20</option>
-                            <option value="30" <?= if ($perPage=="30") echo 'selected="selected"' ?>>30</option>
+                            <option value="10" <?= if($perPage=="10") echo 'selected="selected"' ?>>10</option>
+                            <option value="20" <?= if($perPage=="20") echo 'selected="selected"' ?>>20</option>
+                            <option value="30" <?= if($perPage=="30") echo 'selected="selected"' ?>>30</option>
                         </select>
                     </div>
                     <div class="mb-2">
                         <label class="form-label">Trier selon :</label>
                         <select class="form-select w-auto" name="sort">
-                            <option value="title" <?= if ($sort=="title") echo 'selected="selected"' ?>>Le nom du film</option>
-                            <option value="type" <?= if ($sort=="type") echo 'selected="selected"' ?>>Le genre du film</option>
-                            <option value="rentals" <?= if ($sort=="rentals") echo 'selected="selected"' ?>>Le nombre de location</option>
+                            <option value="title" <?= if($sort=="title") echo 'selected="selected"' ?>>Le nom du film</option>
+                            <option value="type" <?= if($sort=="type") echo 'selected="selected"' ?>>Le genre du film</option>
+                            <option value="rentals" <?= if($sort=="rentals") echo 'selected="selected"' ?>>Le nombre de location</option>
                         </select>
                     </div>
                     <div class="mb-2">
                         <label class="form-label">Par ordre :</label>
                         <select class="form-select w-auto" name="direction">
-                            <option value="ASC" <?= if ($direction=="ASC") echo 'selected="selected"' ?>>Croissant</option>
-                            <option value="DESC" <?= if ($direction=="DESC") echo 'selected="selected"' ?>>Décroissant</option>
+                            <option value="ASC" <?= if($direction=="ASC") echo 'selected="selected"' ?>>Croissant</option>
+                            <option value="DESC" <?= if($direction=="DESC") echo 'selected="selected"' ?>>Décroissant</option>
                         </select>
                     </div>
                     <input type="hidden" name="page" value="<?php echo $currentPage ?>">
