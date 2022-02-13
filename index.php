@@ -41,6 +41,8 @@ $currentPageFirstMovie = ($currentPage * $perPage) - $perPage;
 
 $sql = 'SELECT * FROM `film` ORDER BY :sort :direction LIMIT :currentPageFirstMovie, :perPage;';
 
+var_dump($sql);
+
 $query = $db->prepare($sql);
 
 $query->bindValue(':currentPageFirstMovie', $currentPageFirstMovie, PDO::PARAM_INT);
