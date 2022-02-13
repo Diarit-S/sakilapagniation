@@ -87,7 +87,7 @@ require_once('close.php');
                         <option value="ASC">Croissant</option>
                         <option value="DESC">Décroissant</option>
                     </select>
-
+                    <input type="hidden" name="page" value="<?php $currentPage ?>">
                     <input class="b-button" type="submit" value="Envoyer">
                 </form>
 
