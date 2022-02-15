@@ -1,7 +1,7 @@
 const getConnection = require('../services/db');
 
 class Movie {
-    getMovies = async ({orderByType = 'film.title', orderBy = 'ASC', limit = 10, page = 1}) => {
+    getMovies = async ({orderByType, orderBy, limit, page}) => {
     try {
         const db = await getConnection()
         const [movies] = await db.execute(`SELECT title, rental_rate, rating, category.name AS category, COUNT(rental.rental_id) AS rental_number FROM film 
